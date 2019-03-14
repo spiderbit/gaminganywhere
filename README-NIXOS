@@ -1,0 +1,5 @@
+To build a nixos path from this, I used the command:
+
+nix-build -E 'with import <nixpkgs> {}; callPackage ./default.nix {}'
+
+(the default.nix expects a ga.tgz with the content of this project) 
