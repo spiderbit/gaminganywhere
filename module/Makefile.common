@@ -2,7 +2,7 @@
 include ../Makefile.def
 
 EXT		= so
-CFLAGS		+= -I../../core -DGA_MODULE $(AVCCF) $(L5CF) $(SDLCF)
+CFLAGS		+= -fpermissive -I../../core -DGA_MODULE $(AVCCF) $(L5CF) $(SDLCF)
 LDFLAGS		= #-L../../core -lga #$(AVCLD) $(SDLLD)
 
 MAKEMODULE	= $(CXX) -o $(TARGET) -shared $^ $(LDFLAGS)

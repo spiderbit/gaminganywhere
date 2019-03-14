@@ -57,7 +57,7 @@ struct RTSPThreadParam {
 	// video
 	int width[VIDEO_SOURCE_CHANNEL_MAX];
 	int height[VIDEO_SOURCE_CHANNEL_MAX];
-	PixelFormat format[VIDEO_SOURCE_CHANNEL_MAX];
+	AVPixelFormat format[VIDEO_SOURCE_CHANNEL_MAX];
 #ifdef ANDROID
 	JNIEnv *jnienv;
 	pthread_mutex_t surfaceMutex[VIDEO_SOURCE_CHANNEL_MAX];

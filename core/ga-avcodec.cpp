@@ -31,12 +31,12 @@ using namespace std;
 static pthread_mutex_t avcodec_open_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 struct SwsContext *
-ga_swscale_init(PixelFormat format, int inW, int inH, int outW, int outH) {
+ga_swscale_init(AVPixelFormat format, int inW, int inH, int outW, int outH) {
 	struct SwsContext *swsctx = NULL;
 	//
 	if((swsctx = sws_getContext(
 				inW, inH, format, //PIX_FMT_BGRA/*PIX_FMT_ARGB*/,
-				outW, outH, PIX_FMT_YUV420P,
+				outW, outH, AV_PIX_FMT_YUV420P,
 				SWS_BICUBIC, NULL, NULL, NULL)) == NULL) {
 		fprintf(stderr, "# ga-swscale-init: cannot create swscale context\n");
 	}
@@ -113,7 +113,7 @@ ga_avformat_new_stream(AVFormatContext *ctx, int id, AVCodec *codec) {
 		st->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
 	}
 	// some codec will need GLOBAL_HEADER to generate ctx->extradata!
-	if(codec->id == CODEC_ID_H264 || codec->id == CODEC_ID_AAC) {
+	if(codec->id == AV_CODEC_ID_H264 || codec->id == AV_CODEC_ID_AAC) {
 		st->codec->flags |= CODEC_FLAG_GLOBAL_HEADER;
 	}
 	return st;
@@ -172,7 +172,7 @@ ga_avcodec_vencoder_init(AVCodecContext *ctx, AVCodec *codec, int width, int hei
 #else
 	ctx->time_base = (AVRational) {1, fps};
 #endif
-	ctx->pix_fmt = PIX_FMT_YUV420P;
+	ctx->pix_fmt = AV_PIX_FMT_YUV420P;
 	ctx->width = width;
 	ctx->height = height;
 

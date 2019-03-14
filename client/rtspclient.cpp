@@ -667,9 +667,9 @@ play_video_priv(int ch/*channel*/, unsigned char *buffer, int bufsize, struct ti
 			if(rtspParam->swsctx[ch] == NULL) {
 				rtspParam->width[ch] = vframe[ch]->width;
 				rtspParam->height[ch] = vframe[ch]->height;
-				rtspParam->format[ch] = (PixelFormat) vframe[ch]->format;
+				rtspParam->format[ch] = (AVPixelFormat) vframe[ch]->format;
 #ifdef ANDROID
-				create_overlay(ch, vframe[0]->width, vframe[0]->height, (PixelFormat) vframe[0]->format);
+				create_overlay(ch, vframe[0]->width, vframe[0]->height, (AVPixelFormat) vframe[0]->format);
 #else
 				pthread_mutex_unlock(&rtspParam->surfaceMutex[ch]);
 				bzero(&evt, sizeof(evt));

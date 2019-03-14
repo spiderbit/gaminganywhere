@@ -13,8 +13,8 @@ core:
 module: core
 	make -C module
 
-server: core
-	make -C server
+# server: core
+# 	make -C server
 
 client: core
 	make -C client

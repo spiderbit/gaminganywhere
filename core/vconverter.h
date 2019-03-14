@@ -24,12 +24,12 @@
 struct vconvcfg {
 	int width;
 	int height;
-	PixelFormat fmt;
+	AVPixelFormat fmt;
 };
 
-EXPORT struct SwsContext * lookup_frame_converter(int w, int h, PixelFormat fmt);
+EXPORT struct SwsContext * lookup_frame_converter(int w, int h, AVPixelFormat fmt);
 EXPORT struct SwsContext * create_frame_converter(
-		int srcw, int srch, PixelFormat srcfmt,
-		int dstw, int dsth, PixelFormat dstfmt);
+		int srcw, int srch, AVPixelFormat srcfmt,
+		int dstw, int dsth, AVPixelFormat dstfmt);
 
 #endif

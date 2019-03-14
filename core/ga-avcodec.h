@@ -39,7 +39,7 @@ extern "C" {
 #include <string>
 #include <vector>
 
-EXPORT struct SwsContext* ga_swscale_init(PixelFormat format, int inW, int inH, int outW, int outH);
+EXPORT struct SwsContext* ga_swscale_init(AVPixelFormat format, int inW, int inH, int outW, int outH);
 //	format = PIX_FMT_BGRA. PIX_FMT_RGBA, ...
 
 EXPORT AVFormatContext* ga_format_init(const char *filename);
